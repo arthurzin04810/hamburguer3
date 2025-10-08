@@ -10,11 +10,11 @@ const lanches = [
 const bebidas = [
   { id: "jarra_uva", nome: "🍇​jarra de uva🍇​ / preço: 19.99", preco: 19.99 },
   { id: "jarra_maracuja", nome: "🍹​jarra de maracujá🍹​ / preço 21.99", preco: 21.99 },
-  { id: "heineken", nome: "🍺​Heineken🍺​ / preço 19.99", preco: 19.99 }
+  { id: "heineken", nome: "🍺​Heineken🍺​ / preço 19.99", preco: 19.99 },
+  { id: "brahma", nome: "🍺​Brahma🍺​ / preço 18.99", preco: 18.99 }
 
 
-
-
+ 
 
 ];
 

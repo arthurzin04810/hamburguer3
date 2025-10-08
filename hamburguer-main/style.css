@@ -19,7 +19,7 @@
 .slider img {
     width: 300px; 
     
-    height: auto; 
+    height: 300px; 
     margin-right: 15px; 
     flex-shrink: 0;
 }
