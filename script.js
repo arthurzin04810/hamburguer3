@@ -1,13 +1,16 @@
 const lanches = [
+  { id: "nada", nome: " Nada / preço: 0.00", preco: 0.00},
   { id: "x_gaucho", nome: "🇨🇬​X-Gaúcho🇨🇬​ / preço: 29.99", preco: 27.99 },
   { id: "x-gaucho", nome: "🥬​X-Salada🥬​ / preço: 24.99", preco: 24.99 },
   { id: "x_pedrao", nome: "😋​X​-Pedrão da Casa🤩​​ / preço: 27.99", preco: 29.99 },
   { id: "x_bacon", nome: "🥓​X-Bacon defumado🥓​ / preço: 30.99", preco: 28.99 },
   { id: "x_frango", nome: "🍗​X-Frango🍗​ / preço: 24.99", preco: 24.99 },
-  { id: "x_tudo", nome: "🍔​X-Tudo🍔​​ / preço: 27.99", preco: 27.99 }
+  { id: "x_tudo", nome: "🍔​X-Tudo🍔​​ / preço: 27.99", preco: 27.99 },
+  { id: "batatafrita", nome: "💦​🍟​Batata-frita ao molho🍟💦​​ / preço: 19.99", preco: 19.99 }
 ];
 
 const bebidas = [
+  { id: "nada", nome: " Nada / preço: 0.00", preco: 0.00},
   { id: "jarra_uva", nome: "🍇​jarra de uva🍇​ / preço: 19.99", preco: 19.99 },
   { id: "jarra_maracuja", nome: "🍹​jarra de maracujá🍹​ / preço 21.99", preco: 21.99 },
   { id: "heineken", nome: "🍺​Heineken🍺​ / preço 19.99", preco: 19.99 },
