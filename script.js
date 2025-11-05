@@ -24,56 +24,85 @@ const pagamento = [
 { id: "cartao_de_debito", nome: "Cartão de débito"},
 { id: "pix", nome: "Pix"},
 
-
-
-
 ]
 
 
-
-// Preencher os selects com base nos vetores
 function preencherOpcoes() {
-  // 1) TRANSPORTE
-  const  selectlanches= document.getElementById("lanches");
-  for (let i = 0; i < lanches.length; i++) {
-    const item = lanches[i];                 // pega o objeto atual do array
-    const option = document.createElement("option"); // cria uma <option>
-    option.value = item.id;                      // valor interno (ex.: "aviao")
-    option.textContent = item.nome;              // texto visível (ex.: "Avião")
-    selectlanches.appendChild(option);        // coloca no <select>
-  }
+  const selectLanches = document.getElementById("lanches");
+  const selectBebidas = document.getElementById("bebidas");
+  const selectPagamento = document.getElementById("pagamento");
 
-  // 2) HOSPEDAGEM
-  const selectbebidas = document.getElementById("bebidas");
-  for (let i = 0; i < bebidas.length; i++) {
-    const item = bebidas[i];
+  lanches.forEach(item => {
     const option = document.createElement("option");
     option.value = item.id;
     option.textContent = item.nome;
-    selectbebidas.appendChild(option);
-  }
-const selectpagamento = document.getElementById("pagamento");
-  for (let i = 0; i < pagamento.length; i++) {
-    const item = pagamento[i];
+    selectLanches.appendChild(option);
+  });
+
+  bebidas.forEach(item => {
     const option = document.createElement("option");
     option.value = item.id;
     option.textContent = item.nome;
-    selectpagamento.appendChild(option);
-  }
+    selectBebidas.appendChild(option);
+  });
 
-
-
-
+  pagamento.forEach(item => {
+    const option = document.createElement("option");
+    option.value = item.id;
+    option.textContent = item.nome;
+    selectPagamento.appendChild(option);
+  });
 }
 
-function procurarPorId(lista, idProcurado) {
-  for (let i = 0; i < lista.length; i++) {
-    if (lista[i].id === idProcurado) {
-      return lista[i]; // devolve o objeto encontrado
-    }
-  }
-  return null; // se não encontrou, devolve nulo
+function procurarPorId(lista, id) {
+  return lista.find(item => item.id === id) || null;
 }
-preencherOpcoes();
+
+function gerarRelatorio() {
+  const nome = document.getElementById("nome").value;
+  const email = document.getElementById("email").value;
+  const endereco = document.getElementById("endereco").value;
+  const numero = document.getElementById("numero").value;
+
+  const idLanche = document.getElementById("lanches").value;
+  const idBebida = document.getElementById("bebidas").value;
+  const qtdLanches = Number(document.getElementById("numero_lanches").value);
+  const qtdBebidas = Number(document.getElementById("numero_bebidas").value);
+  const formaPag = document.getElementById("pagamento").value;
+
+  const lanche = procurarPorId(lanches, idLanche);
+  const bebida = procurarPorId(bebidas, idBebida);
+  const pagamentoEscolhido = procurarPorId(pagamento, formaPag);
+
+  const totalLanches = lanche.preco * qtdLanches;
+  const totalBebidas = bebida.preco * qtdBebidas;
+  const total = totalLanches + totalBebidas;
+
+  const relatorio = `
+    <p><b>Nome:</b> ${nome}</p>
+    <p><b>E-mail:</b> ${email}</p>
+    <p><b>Endereço:</b> ${endereco}</p>
+    <p><b>Telefone:</b> ${numero}</p>
+    <hr>
+    <p><b>Lanche:</b> ${lanche.nome}</p>
+    <p><b>Quantidade:</b> ${qtdLanches}</p>
+    <p><b>Total Lanches:</b> R$ ${totalLanches.toFixed(2)}</p>
+    <hr>
+    <p><b>Bebida:</b> ${bebida.nome}</p>
+    <p><b>Quantidade:</b> ${qtdBebidas}</p>
+    <p><b>Total Bebidas:</b> R$ ${totalBebidas.toFixed(2)}</p>
+    <hr>
+    <p><b>Forma de pagamento:</b> ${pagamentoEscolhido.nome}</p>
+    <h3>Total do Pedido: 💰 R$ ${total.toFixed(2)}</h3>
+  `;
+
+  document.getElementById("relatorio").innerHTML = relatorio;
+}
+
+window.addEventListener("DOMContentLoaded", () => {
+  preencherOpcoes();
+  document.getElementById("gerarRelatorio").addEventListener("click", gerarRelatorio);
+});
+
 
 
