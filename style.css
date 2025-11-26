@@ -33,6 +33,12 @@
     #relatorio, #relatorio * {
         visibility: visible;
     }
+    #logo{
+        visibility: visible;
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
     #relatorio {
         position: absolute;
         left: 0;
